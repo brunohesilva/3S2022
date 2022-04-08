@@ -11,7 +11,7 @@ public class MainMedia{
 
         double n1 = myMedia.getA1();
 
-        myMedia.score();
+        myMedia. score();
         
 
     }
