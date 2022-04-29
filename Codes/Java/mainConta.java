@@ -1,9 +1,9 @@
 package Java;
 
-
 public class mainConta {
     
     public static void main(String[] args) {
+
         contaEmpresa contaE1 = new contaEmpresa();
         System.out.println(contaE1.getsaldoConta());
         contaE1.saqueConta(5000);
@@ -22,5 +22,4 @@ public class mainConta {
         System.out.println(conta2.getsaldoConta());
 
     }
-
 }
