@@ -1,8 +1,6 @@
 package Java;
 import java.util.Scanner;
 
-import javax.imageio.ImageIO;
-
 public class Revisao {
     
     private int soma;
@@ -72,19 +70,20 @@ public class Revisao {
 
     public double mediaImpar() {
 
-        int n = 0;
+        int numero = 0;
         this.soma = 0;
         this.media = 0;
 
         for(int i = 0; i<10; i++) {
 
-            if (impar(n[i])){
+            if(impar(n[i])) {
                 soma = soma + n[i];
-                n++;
+                numero++;
+            
             }
         }
 
-        media = soma / n;
+        media = soma / numero;
         return media;
     }
 }
