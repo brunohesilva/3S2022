@@ -1,6 +1,6 @@
 package Java.formasGeometricas;
 
-public class Forma {
+public abstract class Forma {
     
     double perimetro;
     double area;
@@ -18,5 +18,9 @@ public class Forma {
     }
     public double getarea() {
         return area;
+    }
+
+    public Forma() {
+
     }
 }

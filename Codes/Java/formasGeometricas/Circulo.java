@@ -3,7 +3,7 @@ package Java.formasGeometricas;
 public class Circulo extends Forma {
 
     double raio;
-    final double PI = 3.14;
+    final static double PI = 3.14;
 
     @Override
     public double cArea(double valor) {
