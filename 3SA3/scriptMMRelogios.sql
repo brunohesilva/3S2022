@@ -133,6 +133,24 @@ CHANGE notaFiscla notaFiscal varchar(100) not null;
 
 alter table Pagamento
 	add CONSTRAINT fkidDC foreign key (idDadosCartao) references DadosCartao(idDadosCartao);
+    
+alter table Pagamento
+	CHANGE pix chavePix varchar(50);
+
+alter table Pagamento
+	modify chavePix float not null;
+
+alter table Pagamento
+	add CONSTRAINT fkPP foreign key (chavePix) references PIX(chavePix);
+    
+alter table Pagamento
+	CHANGE boleto idBoleto varchar(50);
+
+alter table Pagamento
+	modify idBoleto int not null;
+
+alter table Pagamento
+	add CONSTRAINT fkPB foreign key (idBoleto) references Boleto(idBoleto);
 
 create table FinalizarCompra(
 	idFC int,
@@ -158,6 +176,15 @@ alter table FinalizarCompra
 alter table FinalizarCompra
     add foreign key (carrinhoCompras) references Usuario(carrinhoCompras);
     
+alter table FinalizarCompra
+	CHANGE metodoPagamento idMetodoPagamento varchar(50);
+
+alter table FinalizarCompra
+	modify idMetodoPagamento int not null;
+
+alter table FinalizarCompra
+	add CONSTRAINT fkFCMP foreign key (idMetodoPagamento) references MetodoPagamento(idMetodoPagamento);
+    
 select * from FinalizarCompra;
 
 create table Usuario(
@@ -170,6 +197,49 @@ create table Usuario(
 );
 
 select * from Usuario;
+
+create table Carrinho(
+	idCarrinho int not null auto_increment,
+    primary key(idCarrinho),
+    codigoRelogio double,
+    quantidade int not null,
+	CONSTRAINT FkRC foreign key (codigoRelogio, quantidade) references Relogio(codigoRelogio, quantidade)
+);
+
+select * from Carrinho;
+
+create table MetodoPagamento (
+	idMetodoPagamento int not null auto_increment,
+	primary key(idMetodoPagamento),
+    chavePix float not null,
+    idDadosCartao int,
+    idBoleto int not null,
+	CONSTRAINT FkMPDC foreign key (idDadosCartao) references DadosCartao(idDadosCartao)
+);
+
+alter table MetodoPagamento
+	add foreign key (chavePix) references PIX(chavePix);
+    
+alter table MetodoPagamento
+	add foreign key (idBoleto) references Boleto(idBoleto);
+
+
+create table PIX(
+	chavePix float not null unique,
+	primary key(chavePix)
+);
+
+create table Boleto(
+	idBoleto int not null auto_increment unique,
+    boleto text(100) not null,
+	primary key(idBoleto)
+);
+
+    
+
+
+    
+
     
 
     
